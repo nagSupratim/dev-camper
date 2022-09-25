@@ -13,6 +13,7 @@ import { connectDB } from "./config/db";
 import bootcamps from "./routes/bootcamps";
 
 // Middleware Imports
+import { errorHandler } from "./middlewares";
 
 // Load Environment Variables
 dotenv.config({ path: "config.env" });
@@ -28,6 +29,9 @@ if (process.env.NODE_ENV === "development") app.use(morgan("dev"));
 
 // Mount Routers
 app.use("/api/v1/bootcamps", bootcamps);
+
+// Error Handler
+app.use(errorHandler);
 
 // Connect to the DB and if successful, start server
 let server: Server, connection: typeof mongoose;
