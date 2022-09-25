@@ -15,10 +15,13 @@ import bootcamps from "./routes/bootcamps";
 // Middleware Imports
 
 // Load Environment Variables
-dotenv.config({ path: "./config/config.env" });
+dotenv.config({ path: "config.env" });
 
 // Creating the Express Application
 const app = Express();
+
+// Body Parser
+app.use(Express.json());
 
 // Dev Logging Middleware
 if (process.env.NODE_ENV === "development") app.use(morgan("dev"));
